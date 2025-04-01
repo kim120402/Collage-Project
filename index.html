@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Product Listing</title>
+    <style>
+        body {
+            font-family: inherit;
+            margin: 0;
+            padding: 0px;
+            background: linear-gradient(to bottom, #d6c8f0, #fddbcc); 
+        } 
+        /* Andrei nav bar container */
+        #nav-container{
+        display: flex;
+        border-bottom: 1px solid black;
+        margin: 0 20px;
+        margin-bottom: 20px;
+        }
+        #logo-image{
+        margin-top: 16px;
+        margin-left: 5px;
+        width: 150px;
+        height: 70px;
+        cursor: pointer;
+        }
+
+        /* Bag icon */
+        #bag-container{
+        height: 42px;
+        width: 42px;
+        margin-right: 30px;
+        cursor: pointer;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        }
+        #bag-icon{
+        width: 28px;
+        height: 30px;
+        padding-right: 0px;
+        }
+
+        /* Nav buttons and container */
+        #navigation{
+        display: flex;
+        list-style-type: none;
+        margin-left: auto;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        }
+        #nav-buttons {
+        display: flex;
+        gap: 60px;
+        font-size: 20px;
+        margin-right: 50px;
+        margin-top: 10px;
+        }
+        a{
+        text-decoration: none;
+        color: black;
+        }
+        /* Drop Down Menu in navigation bar */
+        #best-seller-items, #nav-shop-items, #nav-customer-care-items{
+        position: absolute;
+        height: 170px;
+        width: 200px;
+        box-shadow: 2px 2px 5px;
+        display: none;
+        background-color: #D9D5F4;
+        margin-top: 10px;
+        z-index: 1; /* To overlap */
+        font-size: 14px;
+        padding: 15px;
+        line-height: 25px; /* items have spacing 25px */
+        }
+
+
+        .slideshow-container {
+            width: 100%; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .image-group {
+            display: flex;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }    
+        .slide {
+            flex: 1;
+            height: 100%;
+            object-fit: cover;
+        }
+        .content {
+            margin: 30px auto;
+            width: 80%;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .content h2 {
+            font-size: 30px;
+        }
+        .container {
+            margin: 0 auto;
+        }
+        .product-grid {
+            display: flex;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .product-card p {
+            font-size: 16px;
+            color: #333;
+            margin: 0;
+        }
+        /* FOOTER SAMAD */
+/* Reset styles */
+
+/* Footer container */
+.footer {
+    margin-top: 13%;
+    padding: 60px 8% 30px;
+    background-color: #ffffff;
+    color: #2d3142;
+    /* Dark text color */
+    border-top: 1px solid #e6e1f0;
+    /* Light purple border */
+
+}
+
+/* Footer content wrapper */
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo section */
+.footer-logo {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 30px;
+    padding-right: 20px;
+}
+
+/* Custom logo styling */
+.logo {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', serif;
+}
+
+.logo-star {
+    font-size: 16px;
+    vertical-align: super;
+}
+
+.logo-text {
+    font-size: 38px;
+    font-weight: bold;
+    color: #2d3142;
+}
+
+.logo-gems {
+    display: block;
+    font-size: 20px;
+    font-style: italic;
+    color: #666;
+    margin-top: -8px;
+    margin-left: 22px;
+}
+
+/* Social icons */
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #666;
+}
+
+.social-icon:hover {
+    background-color: #f5f0ff;
+}
+
+.social-icon.instagram {
+    /* Highlight Instagram icon if needed */
+}
+
+/* Navigation links section */
+.footer-nav {
+    flex: 1;
+    min-width: 220px;
+    margin-bottom: 30px;
+}
+
+.footer-nav ul {
+    list-style: none;
+}
+
+.footer-nav li {
+    margin-bottom: 15px;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #2d3142;
+    transition: color 0.3s ease;
+    font-size: 15px;
+}
+
+.footer-nav a:hover {
+    color: #7b68ee;
+    /* Purple hover color */
+}
+
+/* Newsletter section */
+.footer-newsletter {
+    flex: 1.5;
+    min-width: 300px;
+    margin-bottom: 30px;
+}
+
+.newsletter-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #2d3142;
+    font-size: 15px;
+}
+
+.newsletter-text p:first-child {
+    margin-bottom: 10px;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 20px;
+    border-bottom: 1px solid #333;
+    width: 100%;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 15px;
+    color: #2d3142;
+}
+
+.newsletter-input::placeholder {
+    color: #888;
+}
+
+.newsletter-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: #2d3142;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 12px;
+}
+
+/* Copyright section */
+.footer-copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #2d3142;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-logo,
+    .footer-nav,
+    .footer-newsletter {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .logo-text {
+        font-size: 34px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header> 
+        <!-- navigation-->
+    </header>
+    <div id="nav-container">
+        <div id="logo"><a href="home.html"><img href="" id="logo-image" src="C:\Users\madri\OneDrive\Documents\JAVASCRIPT FINAL PROJECT\Images\logo.png" alt=""></a></div>
+        <nav id="navigation">
+            <div id="nav-buttons">
+                <div id="best-seller-container">
+                    <li><a id="Best-Seller" href="home.html#bs-header">Best Seller</a></li>
+                    <div id="best-seller-items">
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=0">Rainbow Moonstone</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=1">Aquamarine Crystal</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=4">Natural Jadeite</a></li>
+                    </div>
+                </div>
+
+                <div id="nav-shop-container">
+                    <li><a id="Shop" href="index.html">Shop</a></li>
+                    <div id="nav-shop-items">
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=0">Rainbow Moonstone</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=1">Aquamarine</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=2">Yellow Rutilated Quartz Energy</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=3">Pink Rose Quartz</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=4">Natural Jadeite</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=5">Green Rutilated Quartz</a></li>
+                    </div>
+                </div>
+
+                <div id="customer-care-container">
+                    <li><a id="Customer-Care" href="">Customer Care</a></li>
+                    <div id="nav-customer-care-items">
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Jewelry Care</a></li>
+                        <li><a href="#">Returns & Repairs</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="bag-container"><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/Checkout.html"><img id="bag-icon" src="C:\Users\madri\OneDrive\Documents\JAVASCRIPT FINAL PROJECT\Images\bag-icon.webp" alt=""></a></div>
+        </nav>
+    </div>
+    <div class="slideshow-container">
+        <div class="image-group" id="imageGroup">
+            <img src="images/jewelry1.jpg" alt="Jewelry 1" class="slide">
+            <img src="images/jewelry2.jpg" alt="Jewelry 2" class="slide">
+            <img src="images/jewelry3.jpg" alt="Jewelry 3" class="slide">
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const imageGroup = document.getElementById("imageGroup");
+    const allImages = [
+        "images/jewelry1.jpg",
+        "images/jewelry2.jpg",
+        "images/jewelry3.jpg",
+        "images/jewelry4.jpg",
+        "images/jewelry5.jpg",
+        "images/jewelry6.jpg"
+    ];
+
+    let currentIndex = 3; 
+
+    function shiftImages() {
+        const slides = imageGroup.querySelectorAll(".slide");
+        
+        imageGroup.removeChild(slides[0]);
+
+        const newImage = document.createElement("img");
+        const nextImageIndex = currentIndex % allImages.length;
+        newImage.src = allImages[nextImageIndex];
+        
+        newImage.alt = `Jewelry ${nextImageIndex + 1}`;
+        newImage.classList.add("slide");
+        imageGroup.appendChild(newImage);
+
+        currentIndex++;
+    }
+
+    setInterval(shiftImages, 2000);
+});
+    </script>
+
+    <div class="content">
+        <h2>TiuTiu Gems - Jewelry with Meaning</h2>
+        <p>
+            Explore our collection of meaningful jewelry with a feeling, a direction, an intent to each piece. Some are light hearted, celebrating LUCKY in all its forms. Some are serious - our PEACE coin to give you a touchstone to someone you have lost. Some are full of emotion - the JOY we feel from motherhood. There is a design for different milestones in your life.
+        </p>
+    </div>
+    <div class="container">
+        <!-- Product Grid -->
+        <div class="product-grid">            
+            <div class="product-card" onclick="goToProductPage(0)">
+                <img src="images/moonstone.JPG" alt="Rainbow Moonstone">
+                <h3>Rainbow Moonstone</h3>
+                <p>$70.00</p>
+            </div>
+            <div class="product-card" onclick="goToProductPage(1)">
+                <img src="images/aquamarine.JPG" alt="Aquamarine Crystal">
+                <h3>Aquamarine Crystal</h3>
+                <p>$86.00</p>
+            </div>
+            <div class="product-card" onclick="goToProductPage(2)">
+                <img src="images/yellow.JPG" alt="Yellow Rutilated Quartz">
+                <h3>Yellow Rutilated Quartz Energy</h3>
+                <p>$98.00</p>
+            </div>
+        </div>
+        <div class="product-grid">               
+            <div class="product-card" onclick="goToProductPage(3)">
+                <img src="images/pink.JPG" alt="Pink Rose Quartz">
+                <h3>Pink Rose Quartz</h3>
+                <p>$65.00</p>
+            </div>
+            <div class="product-card" onclick="goToProductPage(4)">
+                <img src="images/jade.JPG" alt="Natural Jadeite">
+                <h3>Natural Jadeite</h3>
+                <p>$88.00</p>
+            </div>
+            <div class="product-card" onclick="goToProductPage(5)">
+                <img src="images/green.JPG" alt="Green Rutilated Quartz">
+                <h3>Green Rutilated Quartz</h3>
+                <p>$68.00</p>
+            </div>
+        <div>
+        </div>
+    </div>
+
+    <script>
+        // Function to redirect to the product page with the product index
+        function goToProductPage(index) {
+            window.location.href = `product.html?index=${index}`;
+        }
+
+        // Nav best seller button
+        function navBestSellerScroll() {
+        document.getElementById("bs-container").scrollIntoView({ behavior: "smooth" });
+        }
+        
+    </script>
+    <script src="home.js"></script>
+</body>
+
+
+<footer class="footer">
+    <div class="footer-content">
+        <!-- Logo and social icons -->
+        <div class="footer-logo">
+            <div class="logo">
+                <span class="logo-star">&#10022;</span>
+                <span class="logo-text">tiutiu</span>
+                <span class="logo-gems">gems</span>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="18" cy="6" r="1.5"></circle>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation links -->
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#">Customer Service</a></li>
+                <li><a href="#">Jewelry Care</a></li>
+                <li><a href="#">Returns & Repairs</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of service</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter signup -->
+        <div class="footer-newsletter">
+            <div class="newsletter-text">
+                <p>Keep in touch about new collections, parties, markets & collaborations.</p>
+                <p>Plus, 10% off your first order #MadLove</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="your-email@example.com" class="newsletter-input" required>
+                <button type="submit" class="newsletter-button">
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 12" fill="none"
+                        stroke="currentColor" stroke-width="1.5">
+                        <line x1="0" y1="6" x2="22" y2="6"></line>
+                        <polyline points="16 1 22 6 16 11"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Copyright information -->
+    <div class="footer-copyright">
+        <p>&copy; 2025 TiuTiu Gems. All rights reserved</p>
+    </div>
+</footer>
+</html>

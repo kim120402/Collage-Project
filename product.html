@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <div id="nav-container">
+        <div id="logo"><a href="home.html"><img href="" id="logo-image" src="C:\Users\madri\OneDrive\Documents\JAVASCRIPT FINAL PROJECT\Images\logo.png" alt=""></a></div>
+        <nav id="navigation">
+            <div id="nav-buttons">
+                <div id="best-seller-container">
+                    <li><a id="Best-Seller" href="home.html#bs-header">Best Seller</a></li>
+                    <div id="best-seller-items">
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=0">Rainbow Moonstone</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=1">Aquamarine Crystal</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=4">Natural Jadeite</a></li>
+                    </div>
+                </div>
+
+                <div id="nav-shop-container">
+                    <li><a id="Shop" href="index.html">Shop</a></li>
+                    <div id="nav-shop-items">
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=0">Rainbow Moonstone</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=1">Aquamarine</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=2">Yellow Rutilated Quartz Energy</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=3">Pink Rose Quartz</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=4">Natural Jadeite</a></li>
+                        <li><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/product.html?index=5">Green Rutilated Quartz</a></li>
+                    </div>
+                </div>
+
+                <div id="customer-care-container">
+                    <li><a id="Customer-Care" href="">Customer Care</a></li>
+                    <div id="nav-customer-care-items">
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Jewelry Care</a></li>
+                        <li><a href="#">Returns & Repairs</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="bag-container"><a href="file:///C:/Users/madri/OneDrive/Documents/JAVASCRIPT%20FINAL%20PROJECT/Checkout.html"><img id="bag-icon" src="C:\Users\madri\OneDrive\Documents\JAVASCRIPT FINAL PROJECT\Images\bag-icon.webp" alt=""></a></div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <!-- Back to Shop Link -->
+        <a href="index.html" class="back-to-shop">Back to Shop</a>
+
+        <!-- Product Image Section -->
+        <div class="product-image">
+            <img id="mainImage" class="main-image" src="https://via.placeholder.com/400x400?text=Product+Image" alt="Main Product Image">
+            <div class="thumbnails" id="thumbnails">
+                <!-- Thumbnails will be populated dynamically -->
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <h1 class="product-title" id="productName">Product Name</h1>
+            <p class="product-price" id="productPrice">$0.00</p>
+            <p class="product-description" id="productDescription">Product description goes here.</p>
+
+            <!-- Checkout Button -->
+            <button class="checkout" id="checkoutButton">CHECK OUT • $0.00</button>
+        </div>
+    </div>
+
+    <script>
+        // Array of product data
+        const products = [
+            {
+                name: "Rainbow Moonstone Bracelet",
+                price: "$70.00",
+                description: "Rainbow moonstone is a variety of feldspar and flashes in a variety of colours when it is turned to different angles. The most sought after colour is blue, which comes in a range of gorgeous shades.",
+                images: [
+                    "images/moonstone.JPG",
+                    "images/moon2.JPG",
+                    "images/moon3.JPG",
+                    "images/moon4.JPG"
+                ]
+            },
+            {
+                name: "Aquamarine Crystal Bracelet",
+                price: "$86.00",
+                description: "‘Aqua’ is the Latin word for water and ‘marine’ means ‘of the sea,’ which signifies the Aquamarine meaning and its link to ancient water kingdoms. With its stunning shade of translucent pale turquoise, true...",
+                images: [
+                    "images/aquamarine.JPG",
+                    "images/aqua.JPG",
+                    "images/aqua1.JPG",
+                    "images/aqua2.JPG"
+                ]
+            },
+            {
+                name: "Yellow Rutilated Quartz Energy Bracelet",
+                price: "$98.00",
+                description: "Light up your soul with the Yellow Rutilated Quartz Energy Bracelet. For those who crave a wash of sunshine, the promise of a blooming lotus, and the bright determination to climb out of the dark, this...",
+                images: [
+                    "images/yellow.JPG",
+                    "images/yellow1.JPG",
+                    "images/yellow2.JPG",
+                    "images/yellow3.JPG"
+                ]
+            },
+            {
+                name: "Pink Rose Quartz",
+                price: "$65.00",
+                description: "Rose Quartz is the stone of universal love. It restores trust and harmony in relationships, encouraging unconditional love. Rose Quartz purifies and opens the heart at all levels to promote love, self-love, friendship, deep inner healing and feelings of peace.",
+                images: [
+                    "images/pink.JPG",
+                    "images/pink1.JPG",
+                    "images/pink2.JPG",
+                    "images/pink3.JPG"
+                ]
+            },
+            {
+                name: "Natural Jadeite",
+                price: "$88.00",
+                description: "Jadeite Jade carries symbolism associated with prosperity, wealth, and good luck. Its diverse colour range includes green, lavender, yellow to brown, white and the rare blue variant, each representing manifestations and vitality, strengthening ties to abundance.",
+                images: [
+                    "images/jade1.JPG",
+                    "images/jade2.JPG",
+                    "images/jade3.JPG",
+                    "images/jade4.JPG"
+                ]
+            },
+            {
+                name: "Green Rutilated Quartz",
+                price: "$68.00",
+                description: "Green Rutilated Quartz is a stunning and energetically powerful gemstone, known for its unique green rutile inclusions within the clear quartz. This beautiful stone carries potent healing properties and is often used for boosting physical vitality, manifesting prosperity, and calming the mind.",
+                images: [
+                    "images/green.JPG",
+                    "images/green1.JPG",
+                    "images/green2.JPG",
+                    "images/green3.JPG"
+                ]
+            }
+        ];
+
+        // Get the product index from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIndex = parseInt(urlParams.get('index')) || 0;
+
+        // Get the selected product
+        const product = products[productIndex];
+
+        // Populate the product details
+        document.getElementById('productName').textContent = product.name;
+        document.getElementById('productPrice').textContent = product.price;
+        document.getElementById('productDescription').textContent = product.description;
+        document.getElementById('checkoutButton').textContent = `CHECK OUT • ${product.price}`;
+        document.getElementById('mainImage').src = product.images[0];
+
+        // Populate the thumbnails
+        const thumbnailsContainer = document.getElementById('thumbnails');
+        product.images.forEach((image, index) => {
+            const thumbnail = document.createElement('img');
+            thumbnail.className = 'thumbnail';
+            thumbnail.src = image;
+            thumbnail.alt = `Thumbnail ${index + 1}`;
+            thumbnail.onclick = () => changeImage(image);
+            thumbnailsContainer.appendChild(thumbnail);
+        });
+
+        // Function to change the main image when a thumbnail is clicked
+        function changeImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+
+        // Function to handle color selection
+        function selectColor(colorElement) {
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            colorElement.classList.add('selected');
+        }
+    </script>
+    <script src="home.js"></script>
+</body>
+<footer class="footer">
+    <div class="footer-content">
+        <!-- Logo and social icons -->
+        <div class="footer-logo">
+            <div class="logo">
+                <span class="logo-star">&#10022;</span>
+                <span class="logo-text">tiutiu</span>
+                <span class="logo-gems">gems</span>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                        </path>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="18" cy="6" r="1.5"></circle>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation links -->
+        <div class="footer-nav">
+            <ul>
+                <li><a href="#">Customer Service</a></li>
+                <li><a href="#">Jewelry Care</a></li>
+                <li><a href="#">Returns & Repairs</a></li>
+                <li><a href="#">Shipping</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of service</a></li>
+            </ul>
+        </div>
+
+        <!-- Newsletter signup -->
+        <div class="footer-newsletter">
+            <div class="newsletter-text">
+                <p>Keep in touch about new collections, parties, markets & collaborations.</p>
+                <p>Plus, 10% off your first order #MadLove</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="your-email@example.com" class="newsletter-input" required>
+                <button type="submit" class="newsletter-button">
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 12" fill="none"
+                        stroke="currentColor" stroke-width="1.5">
+                        <line x1="0" y1="6" x2="22" y2="6"></line>
+                        <polyline points="16 1 22 6 16 11"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Copyright information -->
+    <div class="footer-copyright">
+        <p>&copy; 2025 TiuTiu Gems. All rights reserved</p>
+    </div>
+</footer>
+</html>
